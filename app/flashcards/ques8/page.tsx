@@ -27,16 +27,7 @@ function Ques1() {
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 8</h4>
           <h1 className={quesClass}>JavaScript is a _______ language.</h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
-            <button
-              className={isClicked ? redLight : choices}
-              onClick={() => {
-                setIsCorrect(false);
-                setIsClicked(true);
-              }}
-            >
-              Static Typed Programming
-            </button>
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? greenLight : choices}
               onClick={() => {
@@ -45,7 +36,15 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Dynamic Typed Programming
+              Single Threaded
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >Multi Threaded
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -76,7 +75,7 @@ function Ques1() {
             </p>
           </div>
           <div
-            className={isClicked ? "flex my-6 justify-around border" : "hidden"}
+            className={isClicked ? "flex my-6 justify-around" : "hidden"}
           >
             <button className={moveBtn} onClick={() => router.push("./ques9")}>
               Next Question

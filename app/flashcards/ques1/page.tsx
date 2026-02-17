@@ -10,7 +10,7 @@ function Ques1() {
   const [isCorrect, setIsCorrect] = useState(false);
   const { score, setScore } = useScore();
   const router = useRouter();
-  const backBtn = moveBtn+ ' hover:cursor-not-allowed hover:bg-red-300'
+  
 
   return (
     <>
@@ -22,7 +22,7 @@ function Ques1() {
           <h1 className={quesClass}>
             JavaScript is a _______ language.
         </h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
               onClick={() => {
@@ -70,9 +70,6 @@ function Ques1() {
             </p>
           </div>
           <div className={isClicked? 'flex my-6 justify-around': 'hidden'}>
-            <button disabled className={backBtn}>
-              Prev Question
-            </button>
             <button
              className={moveBtn}
              onClick={() => router.push("./ques2")}

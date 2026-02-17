@@ -26,8 +26,8 @@ function Ques1() {
       <div className={mainDiv}>
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 7</h4>
-          <h1 className={quesClass}>JavaScript is a _______ language.</h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
+          <h1 className={quesClass}>Which one is NOT a JavaScript Library</h1>
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
               onClick={() => {
@@ -35,7 +35,25 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Static Typed Programming
+              jQuery
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >
+              React
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >
+              Lodash
             </button>
             <button
               className={isClicked ? greenLight : choices}
@@ -45,25 +63,7 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Dynamic Typed Programming
-            </button>
-            <button
-              className={isClicked ? redLight : choices}
-              onClick={() => {
-                setIsCorrect(false);
-                setIsClicked(true);
-              }}
-            >
-              Both of the above
-            </button>
-            <button
-              className={isClicked ? redLight : choices}
-              onClick={() => {
-                setIsCorrect(false);
-                setIsClicked(true);
-              }}
-            >
-              None of the above
+              Angular
             </button>
           </div>
           <div className={isClicked ? resultDiv : "hidden"}>
@@ -76,7 +76,7 @@ function Ques1() {
             </p>
           </div>
           <div
-            className={isClicked ? "flex my-6 justify-around border" : "hidden"}
+            className={isClicked ? "flex my-6 justify-around" : "hidden"}
           >
             <button className={moveBtn} onClick={() => router.push("./ques8")}>
               Next Question

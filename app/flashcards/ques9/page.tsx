@@ -26,16 +26,15 @@ function Ques1() {
       <div className={mainDiv}>
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 9</h4>
-          <h1 className={quesClass}>JavaScript is a _______ language.</h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
+          <h1 className={quesClass}>Latest version of JavaScript is </h1>
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
               onClick={() => {
                 setIsCorrect(false);
                 setIsClicked(true);
               }}
-            >
-              Static Typed Programming
+            >ECMAScript 2026 (ES2026)
             </button>
             <button
               className={isClicked ? greenLight : choices}
@@ -45,7 +44,7 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Dynamic Typed Programming
+              ECMAScript 2025 (ES2025)
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -54,7 +53,7 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Both of the above
+              ECMAScript 2024 (ECMA2024)
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -63,7 +62,7 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              None of the above
+              ECMAScript 2020(ES2020)
             </button>
           </div>
           <div className={isClicked ? resultDiv : "hidden"}>
@@ -76,7 +75,7 @@ function Ques1() {
             </p>
           </div>
           <div
-            className={isClicked ? "flex my-6 justify-around border" : "hidden"}
+            className={isClicked ? "flex my-6 justify-around" : "hidden"}
           >
             <button className={moveBtn} onClick={() => router.push("./ques10")}>
               Next Question

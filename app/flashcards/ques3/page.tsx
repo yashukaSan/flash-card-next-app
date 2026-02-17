@@ -27,7 +27,7 @@ function Ques1() {
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 3</h4>
           <h1 className={quesClass}>Which one is not a JavaScript Limitation</h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
               onClick={() => {
@@ -76,7 +76,7 @@ function Ques1() {
             </p>
           </div>
           <div
-            className={isClicked ? "flex my-6 justify-around border" : "hidden"}
+            className={isClicked ? "flex my-6 justify-around" : "hidden"}
           >
             <button className={moveBtn} onClick={() => router.push("./ques4")}>
               Next Question

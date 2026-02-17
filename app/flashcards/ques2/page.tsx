@@ -29,7 +29,7 @@ function Ques2() {
           <h1 className={quesClass}>
             Which is not a JavaScript Feature
           </h1>
-          <div className="border grid grid-cols-2 gap-3 p-3">
+          <div className="grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
               onClick={() => {
@@ -78,7 +78,7 @@ function Ques2() {
             </p>
           </div>
           <div
-            className={isClicked ? "flex my-6 justify-around border" : "hidden"}
+            className={isClicked ? "flex my-6 justify-around" : "hidden"}
           >
             <button className={moveBtn} onClick={() => router.push("./ques3")}>
               Next Question

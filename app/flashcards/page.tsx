@@ -20,7 +20,7 @@ function FlashCardPage() {
                     JavaScript is a versatile, dynamically typed programming language that brings life to web pages by making them interactive. It is used for building interactive web applications, supports both client-side and server-side development, and integrates seamlessly with HTML, CSS, and a rich standard library.
                 </p>
                 <hr />
-                <ul className="text-left list-disc list-inside">
+                <ul className="text-left list-disc list-inside p-3">
                     <li>
                         JavaScript is a single-threaded language that executes one task at a time.
                     </li>
@@ -39,7 +39,7 @@ function FlashCardPage() {
                     </h2>
                     <ul className="list-inside list-disc text-left">
                         <li>
-                            Client-Side Scripting: JavaScript runs on the user's browser, so has a faster response time without needing to communicate with the server.
+                            Client-Side Scripting: JavaScript runs on the user&apos;s browser, so has a faster response time without needing to communicate with the server.
                         </li>
                         <li>Versatile: Can be used for a wide range of tasks, from simple calculations to complex server-side applications.
                         </li>
