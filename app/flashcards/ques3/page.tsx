@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import useColorTheme from "../useColorTheme";
+import { useScore } from "../../useScore";
 
 function Ques1() {
   const [
@@ -13,21 +14,19 @@ function Ques1() {
     moveBtn,
     quesNumClass,
     quesClass,
+    resultDiv
   ] = useColorTheme();
   const [isClicked, setIsClicked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const { score, setScore } = useScore();
   const router = useRouter();
-
-  function handleClick() {
-    setIsClicked(true);
-  }
 
   return (
     <>
       <div className={mainDiv}>
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 3</h4>
-          <h1 className={quesClass}>JavaScript is a _______ language.</h1>
+          <h1 className={quesClass}>Which one is not a JavaScript Limitation</h1>
           <div className="border grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
@@ -36,16 +35,17 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Static Typed Programming
+              Security Risk
             </button>
             <button
               className={isClicked ? greenLight : choices}
               onClick={() => {
                 setIsCorrect(true);
+                setScore(score + 1);
                 setIsClicked(true);
               }}
             >
-              Dynamic Typed Programming
+              High Community
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -54,7 +54,7 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Both of the above
+              Slower Performance
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -63,16 +63,22 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              None of the above
+              More Complex
             </button>
+          </div>
+          <div className={isClicked ? resultDiv : "hidden"}>
+            <p className={isClicked && isCorrect ? "" : "hidden"}>
+              Congrats 🎉🎉
+              <br /> Your Anwer is Correct
+            </p>
+            <p className={isClicked && isCorrect ? "hidden" : ""}>
+              Oops... Worng Answer
+            </p>
           </div>
           <div
             className={isClicked ? "flex my-6 justify-around border" : "hidden"}
           >
-            <button
-              className={moveBtn}
-              onClick={() => router.push("./ques4")}
-            >
+            <button className={moveBtn} onClick={() => router.push("./ques4")}>
               Next Question
             </button>
           </div>

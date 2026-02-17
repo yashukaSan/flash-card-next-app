@@ -2,18 +2,15 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import useColorTheme from "../useColorTheme";
+import { useScore } from "../../useScore";
 
 function Ques1() {
-    const [ redLight, greenLight, choices, mainDiv, parentDiv, moveBtn, quesNumClass, quesClass ] = useColorTheme();
+    const [ redLight, greenLight, choices, mainDiv, parentDiv, moveBtn, quesNumClass, quesClass, resultDiv ] = useColorTheme();
   const [isClicked, setIsClicked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const { score, setScore } = useScore();
   const router = useRouter();
   const backBtn = moveBtn+ ' hover:cursor-not-allowed hover:bg-red-300'
-
-
-  function handleClick() {
-    setIsClicked(true);
-  }
 
   return (
     <>
@@ -40,6 +37,7 @@ function Ques1() {
               onClick={() => {
                 setIsCorrect(true);
                 setIsClicked(true);
+                setScore(score + 1);
               }}
             >
               Dynamic Typed Programming
@@ -63,7 +61,15 @@ function Ques1() {
               None of the above
             </button>
           </div>
-          <div className={isClicked? 'flex my-6 justify-around border': 'hidden'}>
+          <div className={isClicked? resultDiv : "hidden"}>
+            <p className={(isClicked && isCorrect)? "": "hidden"}>
+              Congrats 🎉🎉<br /> Your Anwer is Correct
+            </p>
+            <p className={(isClicked && isCorrect)? "hidden": ""}>
+              Oops... Worng Answer
+            </p>
+          </div>
+          <div className={isClicked? 'flex my-6 justify-around': 'hidden'}>
             <button disabled className={backBtn}>
               Prev Question
             </button>

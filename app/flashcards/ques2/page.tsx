@@ -2,8 +2,9 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import useColorTheme from "../useColorTheme";
+import { useScore } from "../../useScore";
 
-function Ques1() {
+function Ques2() {
   const [
     redLight,
     greenLight,
@@ -13,21 +14,21 @@ function Ques1() {
     moveBtn,
     quesNumClass,
     quesClass,
+    resultDiv
   ] = useColorTheme();
   const [isClicked, setIsClicked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+  const { score, setScore } = useScore();
   const router = useRouter();
-
-  function handleClick() {
-    setIsClicked(true);
-  }
 
   return (
     <>
       <div className={mainDiv}>
         <div className={parentDiv}>
           <h4 className={quesNumClass}>Question 2</h4>
-          <h1 className={quesClass}>JavaScript is a _______ language.</h1>
+          <h1 className={quesClass}>
+            Which is not a JavaScript Feature
+          </h1>
           <div className="border grid grid-cols-2 gap-3 p-3">
             <button
               className={isClicked ? redLight : choices}
@@ -36,16 +37,26 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Static Typed Programming
+              Client-side Scripting
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false); 
+                setIsClicked(true);
+              }}
+            >
+              Versatile
             </button>
             <button
               className={isClicked ? greenLight : choices}
               onClick={() => {
                 setIsCorrect(true);
+                setScore(score + 1);
                 setIsClicked(true);
               }}
             >
-              Dynamic Typed Programming
+              Poor Ecosystem
             </button>
             <button
               className={isClicked ? redLight : choices}
@@ -54,25 +65,22 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Both of the above
+              Event-Driven
             </button>
-            <button
-              className={isClicked ? redLight : choices}
-              onClick={() => {
-                setIsCorrect(false);
-                setIsClicked(true);
-              }}
-            >
-              None of the above
-            </button>
+          </div>
+          <div className={isClicked ? resultDiv : "hidden"}>
+            <p className={isClicked && isCorrect ? "" : "hidden"}>
+              Congrats 🎉🎉
+              <br /> Your Anwer is Correct
+            </p>
+            <p className={isClicked && isCorrect ? "hidden" : ""}>
+              Oops... Worng Answer
+            </p>
           </div>
           <div
             className={isClicked ? "flex my-6 justify-around border" : "hidden"}
           >
-            <button
-              className={moveBtn}
-              onClick={() => router.push("./ques3")}
-            >
+            <button className={moveBtn} onClick={() => router.push("./ques3")}>
               Next Question
             </button>
           </div>
@@ -82,4 +90,4 @@ function Ques1() {
   );
 }
 
-export default Ques1;
+export default Ques2;

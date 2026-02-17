@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import useColorTheme from "../useColorTheme";
+import {useScore} from '../../useScore'
 
 function Ques1() {
   const [
@@ -13,14 +14,13 @@ function Ques1() {
     moveBtn,
     quesNumClass,
     quesClass,
+    resultDiv
   ] = useColorTheme();
+  const { score, setScore } = useScore();
   const [isClicked, setIsClicked] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const router = useRouter();
-
-  function handleClick() {
-    setIsClicked(true);
-  }
+  
 
   return (
     <>
@@ -36,11 +36,12 @@ function Ques1() {
                 setIsClicked(true);
               }}
             >
-              Static Typed Programming
+              Static Typed Programming 
             </button>
             <button
               className={isClicked ? greenLight : choices}
               onClick={() => {
+                setScore(score+1);
                 setIsCorrect(true);
                 setIsClicked(true);
               }}
@@ -66,13 +67,19 @@ function Ques1() {
               None of the above
             </button>
           </div>
+          <div className={isClicked ? resultDiv : "hidden"}>
+            <p className={isClicked && isCorrect ? "" : "hidden"}>
+              Congrats 🎉🎉
+              <br /> Your Anwer is Correct
+            </p>
+            <p className={isClicked && isCorrect ? "hidden" : ""}>
+              Oops... Worng Answer
+            </p>
+          </div>
           <div
             className={isClicked ? "flex my-6 justify-around border" : "hidden"}
           >
-            <button
-              className={moveBtn}
-              onClick={() => router.push("./result")}
-            >
+            <button className={moveBtn} onClick={() => router.push("./result")}>
               Next Question
             </button>
           </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-export let score=0;
+
+
 export default function Home() {
   const  router = useRouter();
   return (
