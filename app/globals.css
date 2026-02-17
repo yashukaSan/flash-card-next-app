@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com');
 
 :root {
   --background: #ffffff;

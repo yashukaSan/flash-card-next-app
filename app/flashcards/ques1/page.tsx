@@ -1,48 +1,83 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from 'react';
+import { useState } from "react";
+import useColorTheme from "../useColorTheme";
 
-function Ques1(){
-    const [isClicked, setIsClicked] = useState(false);
-    const router = useRouter();
+function Ques1() {
+    const [ redLight, greenLight, choices, mainDiv, parentDiv, moveBtn, quesNumClass, quesClass ] = useColorTheme();
+  const [isClicked, setIsClicked] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const router = useRouter();
+  const backBtn = moveBtn+ ' hover:cursor-not-allowed hover:bg-red-300'
 
-    function handleClick(){ 
-        setIsClicked(true);
-    }
 
-    return (
-        <>
-        <div>
-            <h4>Question 1</h4>
-            <h1>
-                JavaScript is a _______ language.
-            </h1>
-            <div>
-                <button onClick={()=>handleClick }>
-                    Static Typed Programming
-                </button>
-                <button>
-                    Dynamic Typed Programming
-                </button>
-                <button>
-                    Both of the above
-                </button>
-                <button>
-                    None of the above
-                </button>
-            </div>
-            <div>
-                <button disabled>
-                    Prev Question
-                </button>
-                <button onClick={()=>router.push('flashcards/ques2')}>
-                    Next Question
-                </button>
-            </div>
+  function handleClick() {
+    setIsClicked(true);
+  }
+
+  return (
+    <>
+      <div className={mainDiv}>
+        <div className={parentDiv}>
+          <h4 className={quesNumClass}>
+            Question 1
+          </h4>
+          <h1 className={quesClass}>
+            JavaScript is a _______ language.
+        </h1>
+          <div className="border grid grid-cols-2 gap-3 p-3">
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >
+              Static Typed Programming
+            </button>
+            <button
+              className={isClicked ? greenLight : choices}
+              onClick={() => {
+                setIsCorrect(true);
+                setIsClicked(true);
+              }}
+            >
+              Dynamic Typed Programming
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >
+              Both of the above
+            </button>
+            <button
+              className={isClicked ? redLight : choices}
+              onClick={() => {
+                setIsCorrect(false);
+                setIsClicked(true);
+              }}
+            >
+              None of the above
+            </button>
+          </div>
+          <div className={isClicked? 'flex my-6 justify-around border': 'hidden'}>
+            <button disabled className={backBtn}>
+              Prev Question
+            </button>
+            <button
+             className={moveBtn}
+             onClick={() => router.push("./ques2")}
+            >
+              Next Question
+            </button>
+          </div>
         </div>
-
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default Ques1;
